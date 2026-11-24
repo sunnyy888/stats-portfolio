@@ -4,78 +4,90 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sunny Yu · Data Projects</title>
-<meta name="description" content="Seven interactive projects on experimentation, choice modeling, bandits and machine learning, by Sunny Yu.">
+<meta name="description" content="Fifteen interactive projects on experiments, choice modeling, bandits and prediction, by Sunny Yu.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 <style>
 :root{
-  --bg:#fafaf8; --panel:#ffffff; --ink:#15171c; --muted:#646a75; --line:#e7e6e1; --soft:#f2f1ec; --accent:#3b5bdb; --accent-soft:#e8edff;
+  --bg:#fafaf8; --panel:#ffffff; --ink:#15171c; --muted:#646a75; --line:#e7e6e1; --soft:#f2f1ec; --accent:#3b5bdb; --accent-soft:#e8edff; --lesson:#7a4b00; --lesson-bg:#fff6e0;
   --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 28px rgba(0,0,0,.06);
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
-  --bg:#111215; --panel:#18191d; --ink:#ececf0; --muted:#9a9fab; --line:#2a2c32; --soft:#202227; --accent:#8ea2ff; --accent-soft:#1f2540; --shadow:0 8px 28px rgba(0,0,0,.4);
+  --bg:#111215; --panel:#18191d; --ink:#ececf0; --muted:#9a9fab; --line:#2a2c32; --soft:#202227; --accent:#8ea2ff; --accent-soft:#1f2540; --lesson:#f3d58a; --lesson-bg:#2d2512; --shadow:0 8px 28px rgba(0,0,0,.4);
 }}
-:root[data-theme="dark"]{ --bg:#111215; --panel:#18191d; --ink:#ececf0; --muted:#9a9fab; --line:#2a2c32; --soft:#202227; --accent:#8ea2ff; --accent-soft:#1f2540; --shadow:0 8px 28px rgba(0,0,0,.4); }
+:root[data-theme="dark"]{ --bg:#111215; --panel:#18191d; --ink:#ececf0; --muted:#9a9fab; --line:#2a2c32; --soft:#202227; --accent:#8ea2ff; --accent-soft:#1f2540; --lesson:#f3d58a; --lesson-bg:#2d2512; --shadow:0 8px 28px rgba(0,0,0,.4); }
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0;flex-wrap:wrap;gap:8px}
 nav .brand{font-weight:800;letter-spacing:-.01em}
-nav .links a{margin-left:18px;color:var(--muted);font-weight:500;font-size:15px}
-.hero{padding:56px 0 40px}
-.hero h1{font-size:48px;line-height:1.08;letter-spacing:-.025em;margin:0 0 16px;max-width:820px}
-.hero p{font-size:19px;color:var(--muted);max-width:720px;margin:0}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-.chip{background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:4px 12px;font-size:13px;font-weight:600}
-h2{font-size:28px;letter-spacing:-.015em;margin:56px 0 6px}
-.lede{color:var(--muted);margin:0 0 22px}
+nav .links a{margin-left:16px;color:var(--muted);font-weight:500;font-size:14.5px}
+.hero{padding:48px 0 30px}
+.hero h1{font-size:46px;line-height:1.08;letter-spacing:-.025em;margin:0 0 16px;max-width:840px}
+.hero p{font-size:19px;color:var(--muted);max-width:740px;margin:0}
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.jump a{background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:5px 14px;font-size:14px;font-weight:600}
+.jump a:hover{text-decoration:none;filter:brightness(.97)}
+section.group{scroll-margin-top:16px}
+h2{font-size:28px;letter-spacing:-.015em;margin:56px 0 4px;display:flex;align-items:baseline;gap:10px}
+h2 .count{font-size:14px;color:var(--muted);font-weight:500}
+.lede{color:var(--muted);margin:0 0 20px;max-width:760px}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.grid.three{grid-template-columns:repeat(3,1fr)}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
 .shot{aspect-ratio:16/10;overflow:hidden;background:var(--soft);border-bottom:1px solid var(--line);display:block}
 .shot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .35s}
 .card:hover .shot img{transform:scale(1.03)}
-.body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
-.body h3{margin:0 0 6px;font-size:20px;letter-spacing:-.01em}
-.body p{margin:0 0 12px;color:var(--muted);font-size:15px}
-.concept{font-size:13.5px;margin:0 0 14px;color:var(--ink)}
+.body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
+.body h3{margin:0 0 6px;font-size:19px;letter-spacing:-.01em}
+.body p{margin:0 0 10px;color:var(--muted);font-size:14.5px}
+.concept{font-size:13.5px;margin:0 0 10px}
 .concept b{color:var(--accent)}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.lesson{background:var(--lesson-bg);color:var(--lesson);border-radius:10px;padding:8px 11px;font-size:13.5px;margin:0 0 12px}
+.lesson b{font-weight:700}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
 .tag{border:1px solid var(--line);border-radius:6px;padding:1px 8px;font-size:12px;color:var(--muted)}
-.actions{margin-top:auto;display:flex;gap:10px}
-.btn{display:inline-block;border:1px solid var(--line);border-radius:9px;padding:7px 14px;font-weight:600;font-size:14px;color:var(--ink);background:var(--panel)}
+.actions{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-block;border:1px solid var(--line);border-radius:9px;padding:7px 13px;font-weight:600;font-size:14px;color:var(--ink);background:var(--panel)}
 .btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .btn:hover{text-decoration:none;border-color:var(--muted)}
-.feature{grid-column:1 / -1;display:grid;grid-template-columns:1.2fr 1fr}
-.feature .shot{aspect-ratio:auto;border-bottom:0;border-right:1px solid var(--line);min-height:320px}
+.study{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mini{display:flex;gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px;box-shadow:var(--shadow);align-items:center}
+.mini img{width:150px;height:96px;object-fit:cover;object-position:top;border-radius:8px;border:1px solid var(--line);flex:none}
+.mini h3{margin:0 0 4px;font-size:16px} .mini p{margin:0 0 6px;font-size:13.5px;color:var(--muted)}
 .about{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:start}
 .about p{margin:0 0 14px}
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow)}
 .panel h3{margin:0 0 10px;font-size:16px}
 .panel ul{margin:0;padding-left:18px;color:var(--muted);font-size:15px}
 .panel li{margin:4px 0}
-footer{color:var(--muted);font-size:14px;padding:56px 0 40px;border-top:1px solid var(--line);margin-top:64px}
-@media (max-width:820px){
-  .hero{padding:28px 0 20px} .hero h1{font-size:34px} .hero p{font-size:17px}
-  .grid{grid-template-columns:1fr} .feature{grid-template-columns:1fr} .feature .shot{border-right:0;border-bottom:1px solid var(--line);min-height:0;aspect-ratio:16/10}
-  .about{grid-template-columns:1fr} nav .links a{margin-left:12px}
+footer{color:var(--muted);font-size:14px;padding:48px 0 40px;border-top:1px solid var(--line);margin-top:64px}
+@media (max-width:900px){ .grid.three{grid-template-columns:1fr 1fr} }
+@media (max-width:760px){
+  .hero{padding:24px 0 16px} .hero h1{font-size:33px} .hero p{font-size:17px}
+  .grid,.grid.three,.study,.about{grid-template-columns:1fr}
+  .mini img{width:110px;height:76px} nav .links a{margin-left:10px}
 }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <nav><span class="brand">Sunny Yu</span><span class="links"><a href="#projects">Projects</a><a href="#about">About</a><a href="https://github.com/sunnyy888">GitHub</a></span></nav>
+  <nav><span class="brand">Sunny Yu</span><span class="links"><a href="#experiments">Experiments</a><a href="#choice">Choice</a><a href="#bandits">Bandits</a><a href="#prediction">Prediction</a><a href="#about">About</a><a href="https://github.com/sunnyy888">GitHub</a></span></nav>
 
   <header class="hero">
     <h1>Turning messy questions into decisions you can defend.</h1>
-    <p>Seven small, working projects on the questions businesses actually ask: <i>Did the change work? What will customers pay for? When should we stop testing? Where do we draw the line?</i> Each one is interactive, tested against known answers, and explained in plain English.</p>
-    <div class="chips"><span class="chip">A/B testing</span><span class="chip">Choice modeling</span><span class="chip">Multi-armed bandits</span><span class="chip">Machine learning</span><span class="chip">Pricing</span><span class="chip">Python · JavaScript</span></div>
+    <p>Fifteen small, working projects on the questions businesses actually ask: <i>Did the change work? What will customers pay for? When should we stop testing? Can we trust this model?</i> Each one is interactive or reproducible, tested against known answers, and explained in plain English.</p>
+    <div class="jump"><a href="#experiments">🧪 Experiments</a><a href="#choice">🛒 Choice modeling</a><a href="#bandits">🎰 Bandits</a><a href="#prediction">🔮 Prediction</a><a href="#study">📚 Study tools</a></div>
   </header>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <p class="lede">Built as extensions of a business-analytics course (experimentation, choice models, bandits and ML). Click any screenshot to try it.</p>
-    <div class="grid" id="cards"></div>
+  <div id="sections"></div>
+
+  <section id="study" class="group">
+    <h2>📚 Study tools</h2>
+    <p class="lede">Built to learn the material above, and to help classmates do the same.</p>
+    <div class="study" id="studyCards"></div>
   </section>
 
   <section id="about">
@@ -84,16 +96,16 @@ footer{color:var(--muted);font-size:14px;padding:56px 0 40px;border-top:1px soli
       <div>
         <p>I'm a student interested in <b>business development, consulting and product</b>: the roles where you have to understand what a customer values, make a call with imperfect data, and explain it so other people act on it.</p>
         <p>My experience so far spans <b>business development at Alibaba Cloud</b> and <b>onboarding growth work at Iris AI</b>: one about framing value in the customer's terms, the other about getting new users to stick, and both about reading the numbers honestly.</p>
-        <p>These projects are how I build the quantitative side of that judgment: knowing when a lift is real (<a href="https://sunnyy888.github.io/ab-test-calculator/">A/B calculator</a>, <a href="https://sunnyy888.github.io/peeking-trap/">peeking trap</a>), what a feature is worth to customers (<a href="https://sunnyy888.github.io/boba-conjoint/results.html">boba conjoint</a>, <a href="https://sunnyy888.github.io/pricing-sim/">pricing game</a>), and how to make cost-aware calls from a model (<a href="https://sunnyy888.github.io/cutoff-lab/">cutoff lab</a>).</p>
+        <p>These projects are how I build the quantitative side of that judgment: knowing when a lift is real (<a href="https://sunnyy888.github.io/cookie-cats-ab/summary.pdf">Cookie Cats readout</a>), what customers will pay for (<a href="https://sunnyy888.github.io/boba-conjoint/results.html">boba conjoint</a>), how to make cost-aware calls from a model (<a href="https://sunnyy888.github.io/overbooking-optimizer/">overbooking optimizer</a>), and when not to trust one (<a href="https://github.com/sunnyy888/ml-report-auditor">report auditor</a>).</p>
       </div>
       <div class="panel">
         <h3>Toolkit</h3>
         <ul>
-          <li>Experiment design: power, sequential testing, false-positive control</li>
-          <li>Choice modeling: conjoint, logit MLE, willingness to pay</li>
-          <li>Decision-making under uncertainty: bandits, simulation</li>
-          <li>ML: leakage audits, time-based validation, cost-based cutoffs</li>
-          <li>Python (numpy, pandas, scikit-learn, multiprocessing), JavaScript, HTML/CSS</li>
+          <li>Experiment design: power, sample-ratio checks, sequential testing</li>
+          <li>Choice modeling: conjoint, logit MLE, willingness to pay, pricing</li>
+          <li>Decision-making under uncertainty: bandits, Monte Carlo simulation</li>
+          <li>ML: leakage audits, time-based validation, cost-based cutoffs, regularization</li>
+          <li>Python (numpy, pandas, scikit-learn, multiprocessing, Jupyter), JavaScript, HTML/CSS</li>
         </ul>
       </div>
     </div>
@@ -103,48 +115,96 @@ footer{color:var(--muted);font-size:14px;padding:56px 0 40px;border-top:1px soli
 </div>
 
 <script>
-const GH = "https://github.com/sunnyy888/", PAGES = "https://sunnyy888.github.io/";
-const P = [
-  { id: "cutoff-lab", title: "Cutoff Lab", feature: true,
-    desc: "A model predicts which of 119,390 real hotel bookings will be canceled, and you drag the decision cutoff to see the confusion matrix, dollar cost, precision, recall and ROC point update live. It shows why the cheapest cutoff (0.82) isn't the most accurate one (0.45), and why leaky features would fake an AUC of 0.90.",
-    concept: "Cost-based classification cutoffs, data leakage and time-based validation (logistic regression vs gradient boosting).",
-    tags: ["scikit-learn", "real data", "ROC / AUC", "interactive"], live: PAGES + "cutoff-lab/" },
-  { id: "bandit-tournament", title: "Bandit Tournament",
-    desc: "A simulation study that runs 10 testing strategies through 6 scenarios, 200 times each, to find which one wastes the fewest customers. Thompson sampling wins most often, but greedy strategies win when there are many similar options, and a 'forgetful' Thompson wins when preferences drift.",
-    concept: "Explore vs exploit, regret, and choosing an adaptive experiment design (Python, numpy, multiprocessing).",
-    tags: ["Python", "simulation", "12,000 experiments", "report"], live: GH + "bandit-tournament/blob/main/REPORT.md", liveLabel: "Read the report" },
-  { id: "boba-conjoint", title: "Boba Conjoint",
-    desc: "A phone-friendly survey asks people to pick between two boba drinks eight times, then a results page estimates what each feature is worth in dollars. A launch simulator predicts market share and revenue for new drinks and warns when the model would overstate a near-copy.",
-    concept: "Choice-based conjoint, logit by maximum likelihood, willingness to pay and the IIA limitation.",
-    tags: ["survey design", "MLE", "WTP", "deployable"], live: PAGES + "boba-conjoint/" },
-  { id: "peeking-trap", title: "The Peeking Trap",
-    desc: "An interactive article where you watch a p-value wander in a test where nothing changed, and are tempted to hit 'Stop now!' when it dips below 0.05. A thousand live simulations show daily peeking turning a 5% false-positive rate into 22%, and how O'Brien–Fleming boundaries fix it.",
-    concept: "Optional stopping, false-positive inflation and sequential testing.",
-    tags: ["explainer", "live simulation", "statistics"], live: PAGES + "peeking-trap/" },
-  { id: "pricing-sim", title: "Price the Fares",
-    desc: "An airline pricing game: you set prices for three fare bundles for ten rounds while simulated travelers choose with hidden preferences. At the end, a model fit to your own sales shows how close you got to the truth and what the revenue-maximizing prices were.",
-    concept: "Price experimentation, logit demand estimation and optimal multi-product pricing.",
-    tags: ["game", "pricing", "MLE", "leaderboard"], live: PAGES + "pricing-sim/" },
-  { id: "ab-test-calculator", title: "A/B Test Calculator",
-    desc: "A three-tab tool that sizes a test, reads its result and puts a dollar value on the lift. Every number comes with its formula and your inputs plugged in, so it teaches as it calculates.",
-    concept: "Power and sample size, two-proportion z-tests, confidence intervals and payback.",
-    tags: ["tool", "statistics", "tested"], live: PAGES + "ab-test-calculator/" },
-  { id: "beat-the-bandit", title: "Beat the Bandit",
-    desc: "A browser game where you try to out-earn two algorithms on three slot machines with hidden payout rates. A live view of Thompson sampling's beliefs shows how it decides what to try next.",
-    concept: "Explore vs exploit, Bayesian updating (Beta posteriors) and regret.",
-    tags: ["game", "Bayesian", "Web Audio"], live: PAGES + "beat-the-bandit/" },
+const GH = "https://github.com/sunnyy888/", PG = "https://sunnyy888.github.io/";
+const SECTIONS = [
+  { id: "experiments", title: "🧪 Experiments", lede: "Did the change work, and how sure are we? Designing, reading and pricing A/B tests, and the traps in between.", items: [
+    { id: "cookie-cats-ab", title: "Cookie Cats A/B Test", feature: true,
+      desc: "A full analysis of a real mobile-game experiment (90,189 players): moving the first gate from level 30 to 40 cut 7-day retention by 0.82 points, about 820 players per 100,000 installs. Delivered as an executed notebook and a one-page client readout.",
+      concept: "Sample-ratio checks, two-proportion tests, bootstrap, peeking simulation on real data.",
+      lesson: "Check the split before the result. This famous dataset has a significant 49.6/50.4 imbalance (p = 0.009) that most write-ups never mention.",
+      tags: ["real data", "Jupyter", "client summary"], links: [["Read the 1-page summary", PG + "cookie-cats-ab/summary.pdf"], ["Notebook", PG + "cookie-cats-ab/cookie_cats_analysis.html"]] },
+    { id: "peeking-trap", title: "The Peeking Trap",
+      desc: "An interactive article: watch a p-value wander in a test where nothing changed, then see 1,000 live simulations turn a 5% false-positive rate into 22% under daily peeking.",
+      concept: "Optional stopping and O'Brien–Fleming sequential boundaries.",
+      lesson: "What matters is how many times you look, not how much traffic you have. A sequential design lets you look without lying to yourself.",
+      tags: ["explainer", "live simulation"], links: [["Read it", PG + "peeking-trap/"]] },
+    { id: "ab-test-calculator", title: "A/B Test Calculator",
+      desc: "Sizes a test, reads its result and puts a dollar value on the lift, with every formula shown with your numbers plugged in.",
+      concept: "Power and sample size, pooled vs unpooled SEs, confidence intervals, payback.",
+      lesson: "Halving the effect you want to detect quadruples the traffic you need, which is why a test's design matters more than its analysis.",
+      tags: ["tool", "worked formulas"], links: [["Use it", PG + "ab-test-calculator/"]] },
+  ] },
+  { id: "choice", title: "🛒 Choice modeling", lede: "What will customers pay for? Learning preferences from choices, and turning them into prices and product decisions.", items: [
+    { id: "boba-conjoint", title: "Boba Conjoint", feature: true,
+      desc: "A phone survey asks people to pick between boba drinks eight times; a results page estimates what each feature is worth in dollars and simulates launching new drinks. Deployable for free to real respondents.",
+      concept: "Choice-based conjoint with a balanced design, logit by maximum likelihood, WTP and IIA.",
+      lesson: "Asking 'what matters to you?' gets 'everything'. Forcing trade-offs reveals real priorities, and the model knows to warn when it would overstate a near-copy.",
+      tags: ["survey design", "MLE", "deployable"], links: [["Take the survey", PG + "boba-conjoint/"], ["Results", PG + "boba-conjoint/results.html"]] },
+    { id: "pricing-sim", title: "Price the Fares",
+      desc: "An airline pricing game: set prices for three fare bundles for ten rounds while simulated travelers choose; a model fit to your own sales then reveals how close you got.",
+      concept: "Price experimentation, logit demand estimation, optimal multi-product pricing.",
+      lesson: "If you never move a price you can't learn its effect. Exploring has a cost, and so does not exploring.",
+      tags: ["game", "pricing"], links: [["Play", PG + "pricing-sim/"]] },
+    { id: "likelihood-explorer", title: "Likelihood Explorer",
+      desc: "Shows maximum likelihood visually: a coin's log-likelihood curve, a logistic-regression surface with Newton's steps animated, standard errors from curvature, and a conjoint you fit by hand.",
+      concept: "Maximum likelihood, Newton–Raphson vs gradient ascent, Hessian-based standard errors.",
+      lesson: "Standard errors are a large-sample approximation: with 80 data points the real spread was 20% wider than the curvature said.",
+      tags: ["explainer", "math made visible"], links: [["Explore", PG + "likelihood-explorer/"]] },
+  ] },
+  { id: "bandits", title: "🎰 Bandits", lede: "When should we stop testing and start earning? Adaptive experiments that learn and exploit at the same time.", items: [
+    { id: "bandit-tournament", title: "Bandit Tournament", feature: true,
+      desc: "A simulation study of 10 testing strategies across 6 scenarios (12,000 experiments) to find which wastes the fewest customers, with a written report on which wins when, and why.",
+      concept: "Explore vs exploit, regret, Thompson sampling, UCB, explore-then-commit (Python, multiprocessing).",
+      lesson: "There's no universal winner. Thompson usually wins, but 'good enough, fast' beats 'best, eventually' when options are many and similar.",
+      tags: ["Python", "simulation", "report"], links: [["Read the report", GH + "bandit-tournament/blob/main/REPORT.md"]] },
+    { id: "beat-the-bandit", title: "Beat the Bandit",
+      desc: "A browser game where you try to out-earn Thompson sampling and ε-greedy on slot machines with hidden payout rates, with a live view of Thompson's beliefs.",
+      concept: "Bayesian updating with Beta posteriors, and regret.",
+      lesson: "Regret scores your choices, not your luck. You can win more coins and still have made worse decisions.",
+      tags: ["game", "Bayesian"], links: [["Play", PG + "beat-the-bandit/"]] },
+  ] },
+  { id: "prediction", title: "🔮 Prediction", lede: "Can we trust this model, and what should we do with it? From honest validation to cost-aware decisions.", items: [
+    { id: "overbooking-optimizer", title: "Overbooking Optimizer", feature: true,
+      desc: "How many extra tickets should a 150-seat flight sell? 10,000 simulated flights at each level chart cost, bump risk and bumps, and compare one average no-show rate with per-passenger model scores.",
+      concept: "Monte Carlo decision analysis, Poisson-binomial risk, newsvendor logic.",
+      lesson: "A model's scores only pay off when flights differ. With realistic variation they cut cost about 39%; with noisy scores they can make it worse.",
+      tags: ["Monte Carlo", "decision tool"], links: [["Try it", PG + "overbooking-optimizer/"]] },
+    { id: "cutoff-lab", title: "Cutoff Lab",
+      desc: "Cancellation models on 119,390 real hotel bookings with an honest time split; drag the decision cutoff and watch the confusion matrix, costs and ROC point update.",
+      concept: "Leakage audits, time-based validation, cost-based cutoffs.",
+      lesson: "Leaky columns made the model look better (AUC 0.90 vs 0.84). The honest model's cheapest cutoff saved $140K on unseen months.",
+      tags: ["scikit-learn", "real data"], links: [["Try it", PG + "cutoff-lab/"]] },
+    { id: "ml-report-auditor", title: "ML Report Auditor",
+      desc: "A Python tool that reads a model write-up and flags mismatched metrics, weak baselines, leaky features, bad splits and causal claims. It caught all 24 planted errors across 6 test reports.",
+      concept: "Model governance: confusion-matrix arithmetic, leakage timing, causal language.",
+      lesson: "Most model mistakes are visible in the write-up itself if you recompute the numbers and ask when each feature is known.",
+      tags: ["Python", "tool"], links: [["See an audit", PG + "ml-report-auditor/audits/hw4_4d.html"]] },
+    { id: "overfit-playground", title: "Overfitting Playground",
+      desc: "Fit polynomials of degree 0–15 to noisy data and watch training vs validation error, then tame a degree-15 fit with Ridge and LASSO.",
+      concept: "Bias–variance, validation curves, Ridge vs LASSO.",
+      lesson: "Training error always falls with complexity; only held-out error tells you when to stop.",
+      tags: ["explainer", "interactive"], links: [["Play", PG + "overfit-playground/"]] },
+    { id: "leakage-detective", title: "Leakage Detective",
+      desc: "A game: in 12 prediction tasks, spot the features that sneak in information from the future. You get a report of the mistakes you make most.",
+      concept: "Data leakage: timing, outcome proxies, future aggregates.",
+      lesson: "One question catches most leaks: could I know this at the exact moment of prediction?",
+      tags: ["game", "12 cases"], links: [["Play", PG + "leakage-detective/"]] },
+  ] },
 ];
-document.getElementById("cards").innerHTML = P.map(p => `
-  <article class="card${p.feature ? " feature" : ""}">
-    <a class="shot" href="${p.live}" aria-label="Open ${p.title}"><img src="assets/${p.id}.jpg" alt="Screenshot of ${p.title}" loading="lazy"></a>
-    <div class="body">
-      <h3>${p.title}</h3>
-      <p>${p.desc}</p>
-      <div class="concept"><b>Concept:</b> ${p.concept}</div>
-      <div class="tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join("")}</div>
-      <div class="actions"><a class="btn primary" href="${p.live}">${p.liveLabel || "Try it"} →</a><a class="btn" href="${GH + p.id}">Code</a></div>
-    </div>
-  </article>`).join("");
+const STUDY = [
+  { id: "practice-exam", title: "Practice Exam", desc: "20 questions, 2 hours, with a fully worked answer key and rubric (every number computed).", links: [["Exam (PDF)", PG + "practice-exam/exam.pdf"], ["Key", PG + "practice-exam/answer_key.pdf"]] },
+  { id: "flashcard-app", title: "Flashcards", desc: "80 cards with spaced repetition and randomized calculation drills; works offline on a phone.", links: [["Study", PG + "flashcard-app/"]] },
+];
+const card = p => `<article class="card">
+  <a class="shot" href="${p.links[0][1]}" aria-label="Open ${p.title}"><img src="assets/${p.id}.jpg" alt="Screenshot of ${p.title}" loading="lazy"></a>
+  <div class="body"><h3>${p.title}</h3><p>${p.desc}</p>
+    <div class="concept"><b>Concept:</b> ${p.concept}</div>
+    <div class="lesson"><b>What this taught me:</b> ${p.lesson}</div>
+    <div class="tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join("")}</div>
+    <div class="actions">${p.links.map(([l, u], i) => `<a class="btn ${i ? "" : "primary"}" href="${u}">${l} ${i ? "" : "→"}</a>`).join("")}<a class="btn" href="${GH + p.id}">Code</a></div></div></article>`;
+document.getElementById("sections").innerHTML = SECTIONS.map(s => `<section class="group" id="${s.id}"><h2>${s.title} <span class="count">${s.items.length} projects</span></h2><p class="lede">${s.lede}</p>
+  <div class="grid ${s.items.length === 3 || s.items.length === 5 ? "three" : ""}">${s.items.map(card).join("")}</div></section>`).join("");
+document.getElementById("studyCards").innerHTML = STUDY.map(p => `<div class="mini"><img src="assets/${p.id}.jpg" alt="Screenshot of ${p.title}" loading="lazy"><div><h3>${p.title}</h3><p>${p.desc}</p>${p.links.map(([l, u]) => `<a href="${u}">${l}</a>`).join(" · ")} · <a href="${GH + p.id}">Code</a></div></div>`).join("");
 </script>
 </body>
 </html>

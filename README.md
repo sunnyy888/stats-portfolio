@@ -1,17 +1,15 @@
 # Sunny Yu · Data Projects
 
-A portfolio site linking seven interactive projects on experimentation, choice modeling, bandits and machine learning. It's static HTML with no build step.
+A portfolio site with fifteen interactive or reproducible projects, grouped by the business question they answer. Each card has a screenshot, a plain-English description, the concept it shows, **what it taught me**, and links to the project and its code. It's static HTML with no build step.
+
+Live at <https://sunnyy888.github.io/stats-portfolio/>
 
 ![Portfolio](screenshots/full.png)
 
-| Project | What it shows |
+| Section | Projects |
 |---|---|
-| [Cutoff Lab](https://github.com/sunnyy888/cutoff-lab) | cost-based cutoffs, leakage and time-split validation on 119k real hotel bookings |
-| [Bandit Tournament](https://github.com/sunnyy888/bandit-tournament) | 10 strategies × 6 scenarios × 200 runs, with a written report |
-| [Boba Conjoint](https://github.com/sunnyy888/boba-conjoint) | survey → logit MLE → willingness to pay → launch simulator |
-| [The Peeking Trap](https://github.com/sunnyy888/peeking-trap) | interactive article on optional stopping and O'Brien–Fleming |
-| [Price the Fares](https://github.com/sunnyy888/pricing-sim) | pricing game with a hidden logit and an MLE reveal |
-| [A/B Test Calculator](https://github.com/sunnyy888/ab-test-calculator) | sample size, results and money, with worked formulas |
-| [Beat the Bandit](https://github.com/sunnyy888/beat-the-bandit) | you against Thompson sampling and ε-greedy |
-
-Live at <https://sunnyy888.github.io/stats-portfolio/> once GitHub Pages is on.
+| 🧪 Experiments | [Cookie Cats A/B test](https://github.com/sunnyy888/cookie-cats-ab) · [The Peeking Trap](https://github.com/sunnyy888/peeking-trap) · [A/B Test Calculator](https://github.com/sunnyy888/ab-test-calculator) |
+| 🛒 Choice modeling | [Boba Conjoint](https://github.com/sunnyy888/boba-conjoint) · [Price the Fares](https://github.com/sunnyy888/pricing-sim) · [Likelihood Explorer](https://github.com/sunnyy888/likelihood-explorer) |
+| 🎰 Bandits | [Bandit Tournament](https://github.com/sunnyy888/bandit-tournament) · [Beat the Bandit](https://github.com/sunnyy888/beat-the-bandit) |
+| 🔮 Prediction | [Overbooking Optimizer](https://github.com/sunnyy888/overbooking-optimizer) · [Cutoff Lab](https://github.com/sunnyy888/cutoff-lab) · [ML Report Auditor](https://github.com/sunnyy888/ml-report-auditor) · [Overfitting Playground](https://github.com/sunnyy888/overfit-playground) · [Leakage Detective](https://github.com/sunnyy888/leakage-detective) |
+| 📚 Study tools | [Practice Exam](https://github.com/sunnyy888/practice-exam) · [Flashcards](https://github.com/sunnyy888/flashcard-app) |
